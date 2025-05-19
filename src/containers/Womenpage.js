@@ -97,10 +97,23 @@ const Womenpage = () => {
           <div className="women-subtitle">Explore our range of exciting accessories</div>
         </div>
         <div className="women-header-hr"></div>
+        <div className="women-toolbar">
+          <div className="toolbar-left">
+            <span className="filter-label">Filter</span>
+            <span className="filter-icon">
+              {/* Filter icon SVG */}
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 5H17M5 10H15M8 15H12" stroke="#888" strokeWidth="2" strokeLinecap="round"/></svg>
+            </span>
+            <span className="toolbar-divider"></span>
+            <span className="product-count">8 Product</span>
+          </div>
+          <div className="toolbar-right">
+            <span className="sort-label">Sort by:</span>
+            <button className="sort-dropdown">Alphabetically, A-Z <span className="sort-arrow">▼</span></button>
+          </div>
+        </div>
         <div className="women-main">
           <aside className="women-sidebar">
-            <div className="filter-label">Filter</div>
-            <div className="product-count">8 Product</div>
             <div className="filters">
               {filtersData.map((filter, idx) => (
                 <div className="filter-group" key={filter.title}>
@@ -124,21 +137,18 @@ const Womenpage = () => {
             </div>
           </aside>
           <section className="women-content">
-            <div className="women-sort-row">
-              <div></div>
-              <div className="sort-by">
-                <span>Sort by:</span>
-                <button className="sort-dropdown">Alphabetically, A-Z <span className="sort-arrow">▼</span></button>
-              </div>
-            </div>
             <div className="product-grid">
               {products.map((product, idx) => (
                 <div className="product-card" key={idx}>
-                  <img src={product.img} alt={product.title} className="product-img" />
-                  <div className="product-brand">{product.brand}</div>
-                  <div className="product-title">{product.title}</div>
-                  <div className="product-price">{product.price}</div>
-                  <div className="product-dot"></div>
+                  <div className="product-image-box">
+                    <img src={product.img} alt={product.title} className="product-img" />
+                  </div>
+                  <div className="product-info">
+                    <div className="brand">{product.brand}</div>
+                    <div className="product-name">{product.title}</div>
+                    <div className="price">{product.price}</div>
+                    <input type="radio" name="product-select" />
+                  </div>
                 </div>
               ))}
             </div>
