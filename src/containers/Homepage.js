@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Header from '../components/Header/Header';
 import Footer from '../components/Footer/Footer';
 import './Homepage.css';
@@ -13,6 +14,7 @@ const heroSlides = [
 const Homepage = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
     const intervalRef = useRef(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         // Only set interval for image slides
@@ -54,6 +56,8 @@ const Homepage = () => {
                         loop={false}
                         muted
                         onEnded={handleVideoEnded}
+                        onClick={() => navigate('/women')}
+                        style={{ cursor: 'pointer' }}
                     />
                 ) : (
                     <img
