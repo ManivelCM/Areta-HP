@@ -140,6 +140,9 @@ const Homepage = () => {
                             </div>
                         </div>
                     </div>
+                    <div className="view-all-row">
+                      <a href="/bestsellers" className="view-all">VIEW ALL</a>
+                    </div>
                 </div>
             </section>
             {/* Spring Look Section */}
@@ -165,6 +168,14 @@ const Homepage = () => {
                                 <div>BLUE FITTED DRESS</div>
                                 <div>$60.00</div>
                             </div>
+                            <div className="spring-product-icons">
+                                <button className="icon-btn">
+                                    <img src={require('../assets/icons/bag.png')} alt="Bag" />
+                                </button>
+                                <button className="icon-btn">
+                                    <img src={require('../assets/icons/next.png')} alt="Arrow" />
+                                </button>
+                            </div>
                         </div>
                         <div className="spring-product-card">
                             <img src={require('../assets/images/option2.png')} alt="Blue Fitted Dress" />
@@ -172,6 +183,14 @@ const Homepage = () => {
                                 <div style={{ fontSize: '0.8rem', color: '#888' }}>NIFE</div>
                                 <div>BLUE FITTED DRESS</div>
                                 <div>$60.00</div>
+                            </div>
+                            <div className="spring-product-icons">
+                                <button className="icon-btn">
+                                    <img src={require('../assets/icons/bag.png')} alt="Bag" />
+                                </button>
+                                <button className="icon-btn">
+                                    <img src={require('../assets/icons/next.png')} alt="Arrow" />
+                                </button>
                             </div>
                         </div>
                     </div>

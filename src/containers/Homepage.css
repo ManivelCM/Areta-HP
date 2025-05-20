@@ -56,9 +56,8 @@ body, .homepage, .footer, .footer-links a, .footer-bottom, .footer-top, .main-na
 .hero-overlay {
   position: absolute;
   left: 0;
-  bottom: 0;
+  bottom: 32px;
   width: 100%;
-  height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -66,7 +65,7 @@ body, .homepage, .footer, .footer-links a, .footer-bottom, .footer-top, .main-na
   color: #fff;
   background: none;
   text-shadow: 0 2px 8px rgba(0,0,0,0.2);
-  padding-bottom: 38px;
+  padding-bottom: 0;
 }
 
 .hero-overlay h2 {
@@ -75,6 +74,31 @@ body, .homepage, .footer, .footer-links a, .footer-bottom, .footer-top, .main-na
   letter-spacing: 1.5px;
   font-weight: 400;
   text-transform: uppercase;
+}
+
+.hero-dots {
+  position: absolute;
+  left: 50%;
+  bottom: 70px;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 2;
+}
+
+.dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: transparent;
+  border: 2px solid #fff;
+  display: inline-block;
+  transition: background 0.2s, border 0.2s;
+}
+
+.dot.active {
+  background: #fff;
+  border: 2px solid #fff;
 }
 
 .discover-btn {
@@ -88,14 +112,7 @@ body, .homepage, .footer, .footer-links a, .footer-bottom, .footer-top, .main-na
   letter-spacing: 1%;
   text-transform: uppercase;
   text-decoration: underline;
-  text-decoration-style: solid;
-  text-decoration-thickness: 1px;
-  text-decoration-skip-ink: auto;
-  text-underline-offset: 0px;
   cursor: pointer;
-  margin-top: 0;
-  padding: 0 8px 0 0;
-  border-radius: 0;
   display: flex;
   align-items: center;
   gap: 6px;
@@ -209,8 +226,8 @@ body, .homepage, .footer, .footer-links a, .footer-bottom, .footer-top, .main-na
 
 .bestseller-carousel {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
   width: 100%;
   max-width: 1440px;
   margin: 0 auto;
@@ -313,25 +330,25 @@ body, .homepage, .footer, .footer-links a, .footer-bottom, .footer-top, .main-na
 }
 
 .spring-look-header {
-  padding-top: 40px;
-  padding-bottom: 24px;
-}
-
-.spring-look-title {
-  font-family: 'Jost', Arial, sans-serif;
-  font-size: 2rem;
-  font-weight: 500;
-  letter-spacing: 1px;
-  margin-bottom: 0;
-  color: #222;
+  width: 100%;
+  background: rgba(248, 248, 248, 1);
+  padding: 32px 0 32px 0;
+  text-align: center;
 }
 
 .spring-look-subtitle {
   font-family: 'Jost', Arial, sans-serif;
-  font-size: 1.1rem;
-  color: #222;
-  margin-bottom: 0;
-  letter-spacing: 1px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 32px;
+  letter-spacing: 1%;
+  text-transform: capitalize;
+  color: rgba(18, 18, 18, 1);
+  margin: 0;
+}
+
+.spring-look-title {
+  margin-top: 8px;
 }
 
 .spring-look-video-wrapper {
@@ -354,7 +371,7 @@ body, .homepage, .footer, .footer-links a, .footer-bottom, .footer-top, .main-na
 
 .spring-look-products {
   position: absolute;
-  right: 32px;
+  right: 10px;
   bottom: 32px;
   display: flex;
   flex-direction: row;
@@ -363,11 +380,13 @@ body, .homepage, .footer, .footer-links a, .footer-bottom, .footer-top, .main-na
 }
 
 .spring-product-card {
+  position: relative;
   background: #fff;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.10);
   padding: 16px;
-  width: 220px;
+  width: 250px;
+  height: 70px;
   display: flex;
   align-items: center;
   gap: 12px;
@@ -375,9 +394,37 @@ body, .homepage, .footer, .footer-links a, .footer-bottom, .footer-top, .main-na
 
 .spring-product-card img {
   width: 60px;
-  height: 80px;
+  height: 90px;
   object-fit: cover;
   border-radius: 8px;
+}
+
+.spring-product-icons {
+  position: absolute;
+  top: 24px;
+  right: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.icon-btn {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  width: 25px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  cursor: pointer;
+}
+
+.icon-btn img {
+  width: 24px;
+  height: 24px;
 }
 
 .spring-product-info {
@@ -397,32 +444,6 @@ body, .homepage, .footer, .footer-links a, .footer-bottom, .footer-top, .main-na
     width: 100%;
   }
 }
-
-.hero-dots {
-  position: absolute;
-  left: 50%;
-  bottom: 18px;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 10px;
-  z-index: 2;
-}
-
-.dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.7);
-  border: 1.5px solid #fff;
-  display: inline-block;
-  transition: background 0.2s, border 0.2s;
-}
-
-.dot.active {
-  background: rgba(208, 19, 0, 1);
-  border: 1.5px solid rgba(208, 19, 0, 1);
-}
-
 
 .catagory right men-img {
   position: absolute;
@@ -492,4 +513,26 @@ body, .homepage, .footer, .footer-links a, .footer-bottom, .footer-top, .main-na
 
 .footer-links a:hover {
   color: #222;
+}
+
+.view-all-row {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+}
+
+.view-all {
+  color: rgba(18, 18, 18, 1);
+  font-size: 16px;
+  text-decoration: underline;
+  letter-spacing: 1px;
+  font-weight: 400;
+  opacity: 0.7;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  margin-top: -100px;
+}
+.view-all:hover {
+  opacity: 1;
 }
