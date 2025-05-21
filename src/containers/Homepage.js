@@ -11,10 +11,84 @@ const heroSlides = [
     { type: 'image', src: require('../assets/images/slide-img.png') },
 ];
 
+const featuredCategories = [
+  {
+    img: require('../assets/images/women-img.png'),
+    label: 'NEW SKIRT',
+    sublabel: 'SHOP NEW COLLECTION',
+    alt: 'New Skirt',
+  },
+  {
+    img: require('../assets/images/men-img.png'),
+    label: 'BLAZERS',
+    sublabel: 'SHOP NEW COLLECTION',
+    alt: 'Blazers',
+  },
+  // Add more categories here if needed
+];
+
+const bestsellerProducts = [
+  {
+    img: require('../assets/images/option1.png'),
+    brand: 'NIFE',
+    title: 'BLACK SKIRT WITH HIGH WAIST',
+    price: '$400',
+  },
+  {
+    img: require('../assets/images/option2.png'),
+    brand: 'NIFE',
+    title: 'COBALT TROUSERS WITH WIDE-DOWN LEG',
+    price: '$400',
+  },
+  {
+    img: require('../assets/images/option3.png'),
+    brand: 'NIFE',
+    title: 'FLARED KNEE-LENGTH SKIRT - RED & BLACK',
+    price: '$400',
+  },
+  {
+    img: require('../assets/images/option4.png'),
+    brand: 'NIFE',
+    title: 'COBALT TROUSERS WITH WIDE-DOWN LEG',
+    price: '$400',
+  },
+  
+  // Add more products as needed
+
+  {
+    img: require('../assets/images/option1.png'),
+    brand: 'NIFE',
+    title: 'BLACK SKIRT WITH HIGH WAIST',
+    price: '$400',
+  },
+  {
+    img: require('../assets/images/option2.png'),
+    brand: 'NIFE',
+    title: 'COBALT TROUSERS WITH WIDE-DOWN LEG',
+    price: '$400',
+  },
+  {
+    img: require('../assets/images/option3.png'),
+    brand: 'NIFE',
+    title: 'FLARED KNEE-LENGTH SKIRT - RED & BLACK',
+    price: '$400',
+  },
+  {
+    img: require('../assets/images/option4.png'),
+    brand: 'NIFE',
+    title: 'COBALT TROUSERS WITH WIDE-DOWN LEG',
+    price: '$400',
+  },
+];
+
 const Homepage = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
     const intervalRef = useRef(null);
     const navigate = useNavigate();
+    const [categoryIndex, setCategoryIndex] = useState(0);
+    const [bestsellerIndex, setBestsellerIndex] = useState(0);
+    const visibleCount = 4;
+    const maxBestsellerIndex = bestsellerProducts.length - visibleCount;
 
     useEffect(() => {
         // Only set interval for image slides
@@ -42,6 +116,9 @@ const Homepage = () => {
     const handleVideoEnded = () => {
         setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
     };
+
+    const leftArrowBg = bestsellerIndex === 0 ? 'rgba(181, 181, 181, 1)' : 'rgba(33, 39, 45, 1)';
+    const rightArrowBg = bestsellerIndex === maxBestsellerIndex ? 'rgba(181, 181, 181, 1)' : 'rgba(33, 39, 45, 1)';
 
     return (
         <div className="homepage">
@@ -92,57 +169,45 @@ const Homepage = () => {
             {/* Bestseller Section */}
             <section className="bestseller-section">
                 <h3>OUR BESTSELLER</h3>
-                <div className="bestseller-carousel">
-                   
-                    <div className="bestseller-list">
-                        <div className="product-card">
-                            <div className="product-image-box">
-                                <img src={require('../assets/images/option1.png')} alt="Black Skirt" />
-                            </div>
-                            <div className="product-info">
-                                <div className="product-brand">NIFE</div>
-                                <div className="product-title">BLACK SKIRT WITH HIGH WAIST</div>
-                                <div className="product-price">$400</div>
-                                <div className="product-selector"></div>
-                            </div>
+                <div className="bestseller-carousel-wrapper">
+                    <div className="bestseller-carousel">
+                        <button
+                            className="bestseller-arrow left"
+                            onClick={() => setBestsellerIndex((prev) => Math.max(prev - 1, 0))}
+                            disabled={bestsellerIndex === 0}
+                            style={{ background: leftArrowBg }}
+                            aria-label="Previous Products"
+                        >
+                            <img src={require('../assets/icons/leftarrow.png')} alt="Left Arrow" />
+                        </button>
+                        <div className="bestseller-list">
+                            {bestsellerProducts.slice(bestsellerIndex, bestsellerIndex + visibleCount).map((product, idx) => (
+                                <div className="product-card" key={idx}>
+                                    <div className="product-image-box">
+                                        <img src={product.img} alt={product.title} />
+                                    </div>
+                                    <div className="product-info">
+                                        <div className="product-brand">{product.brand}</div>
+                                        <div className="product-title">{product.title}</div>
+                                        <div className="product-price">{product.price}</div>
+                                        <div className="product-selector"></div>
+                                    </div>
+                                </div>
+                            ))}
                         </div>
-                        <div className="product-card">
-                            <div className="product-image-box">
-                                <img src={require('../assets/images/option2.png')} alt="Cobalt Trousers" />
-                            </div>
-                            <div className="product-info">
-                                <div className="product-brand">NIFE</div>
-                                <div className="product-title">COBALT TROUSERS WITH WIDE-DOWN LEG</div>
-                                <div className="product-price">$400</div>
-                                <div className="product-selector"></div>
-                            </div>
-                        </div>
-                        <div className="product-card">
-                            <div className="product-image-box">
-                                <img src={require('../assets/images/option3.png')} alt="Flared Skirt" />
-                            </div>
-                            <div className="product-info">
-                                <div className="product-brand">NIFE</div>
-                                <div className="product-title">FLARED KNEE-LENGTH SKIRT - RED & BLACK</div>
-                                <div className="product-price">$400</div>
-                                <div className="product-selector"></div>
-                            </div>
-                        </div>
-                        <div className="product-card">
-                            <div className="product-image-box">
-                                <img src={require('../assets/images/option4.png')} alt="Cobalt Trousers" />
-                            </div>
-                            <div className="product-info">
-                                <div className="product-brand">NIFE</div>
-                                <div className="product-title">COBALT TROUSERS WITH WIDE-DOWN LEG</div>
-                                <div className="product-price">$400</div>
-                                <div className="product-selector"></div>
-                            </div>
-                        </div>
+                        <button
+                            className="bestseller-arrow right"
+                            onClick={() => setBestsellerIndex((prev) => Math.min(prev + 1, maxBestsellerIndex))}
+                            disabled={bestsellerIndex === maxBestsellerIndex}
+                            style={{ background: rightArrowBg }}
+                            aria-label="Next Products"
+                        >
+                            <img src={require('../assets/icons/rightarrow.png')} alt="Right Arrow" />
+                        </button>
                     </div>
-                    <div className="view-all-row">
-                      <a href="/bestsellers" className="view-all">VIEW ALL</a>
-                    </div>
+                </div>
+                <div className="view-all-row">
+                    <a href="/bestsellers" className="view-all">VIEW ALL</a>
                 </div>
             </section>
             {/* Spring Look Section */}

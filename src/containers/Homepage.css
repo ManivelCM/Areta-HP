@@ -127,17 +127,58 @@ body, .homepage, .footer, .footer-links a, .footer-bottom, .footer-top, .main-na
 
 .featured-categories {
   display: flex;
-  width: 1240px;
+  width: 100%;
   height: 612px;
   margin: 0 auto 32px auto;
   position: relative;
   background: #fff;
   box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+}
+
+.category-carousel {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.category-arrow {
+  border: none;
+  outline: none;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 3;
+  margin: 0 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  cursor: pointer;
+  transition: background 0.2s;
+  padding: 0;
+}
+.category-arrow img {
+  width: 24px;
+  height: 24px;
+}
+.category-arrow:disabled {
+  cursor: not-allowed;
+}
+.category-arrow.left:disabled {
+  background: rgba(181, 181, 181, 1) !important;
+}
+.category-arrow.right:disabled {
+  background: rgba(33, 39, 45, 1) !important;
 }
 
 .category {
   position: relative;
-  width: 720px;
+  width: 50%;
   height: 612px;
   overflow: hidden;
   display: flex;
@@ -149,16 +190,17 @@ body, .homepage, .footer, .footer-links a, .footer-bottom, .footer-top, .main-na
 }
 
 .category img {
-  width: 720px;
+  width: 100%;
   height: 612px;
   display: block;
   margin: 0 auto;
   border-radius: 0;
   background: #fff;
+  object-fit: cover;
 }
 
 .category.right img {
-  width: 720px;
+  width: 100%;
   height: 612px;
   object-fit: cover;
   object-position: center 5%;
@@ -224,33 +266,46 @@ body, .homepage, .footer, .footer-links a, .footer-bottom, .footer-top, .main-na
   letter-spacing: 1px;
 }
 
+.bestseller-carousel-wrapper {
+  position: relative;
+  width: 100%;
+}
+
 .bestseller-carousel {
   display: flex;
-  flex-direction: column;
   align-items: center;
+  justify-content: center;
   width: 100%;
-  max-width: 1440px;
-  margin: 0 auto;
   position: relative;
 }
 
-.carousel-arrow {
-  background: #fff;
+.bestseller-arrow {
+  position: absolute;
+  top: 40%;
+  transform: translateY(-50%);
+  z-index: 3;
   border: none;
+  outline: none;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
-  width: 48px;
-  height: 48px;
   display: flex;
   align-items: center;
   justify-content: center;
   box-shadow: 0 2px 8px rgba(0,0,0,0.10);
   cursor: pointer;
-  z-index: 2;
+  transition: background 0.2s;
+  padding: 0;
 }
-
-.carousel-arrow img {
-  width: 24px;
-  height: 24px;
+.bestseller-arrow.left {
+  left: 0;
+}
+.bestseller-arrow.right {
+  right: 0;
+}
+.bestseller-arrow img {
+  width: 16px;
+  height: 16px;
 }
 
 .bestseller-list {
@@ -258,6 +313,7 @@ body, .homepage, .footer, .footer-links a, .footer-bottom, .footer-top, .main-na
   gap: 32px;
   justify-content: center;
   width: 100%;
+  overflow: hidden;
 }
 
 .product-card {
@@ -435,13 +491,37 @@ body, .homepage, .footer, .footer-links a, .footer-bottom, .footer-top, .main-na
 }
 
 @media (max-width: 900px) {
-  .featured-categories, .bestseller-list, .spring-look-main {
-    flex-direction: column;
-    align-items: center;
+  .featured-categories {
+    flex-direction: row;
+    height: 400px;
   }
-  .category, .spring-look-main img {
-    max-width: 90vw;
+  .category-carousel {
+    height: 100%;
+  }
+  .category {
     width: 100%;
+    height: 400px;
+  }
+  .category img,
+  .category.right img {
+    height: 400px;
+  }
+  .category-arrow {
+    width: 36px;
+    height: 36px;
+    margin: 0 8px;
+  }
+  .category-arrow img {
+    width: 18px;
+    height: 18px;
+  }
+  .bestseller-arrow {
+    width: 28px;
+    height: 28px;
+  }
+  .bestseller-arrow img {
+    width: 12px;
+    height: 12px;
   }
 }
 
@@ -535,4 +615,23 @@ body, .homepage, .footer, .footer-links a, .footer-bottom, .footer-top, .main-na
 }
 .view-all:hover {
   opacity: 1;
+}
+
+@media (max-width: 1200px) {
+  .bestseller-list {
+    gap: 16px;
+  }
+}
+@media (max-width: 900px) {
+  .bestseller-arrow {
+    width: 36px;
+    height: 36px;
+  }
+  .bestseller-arrow img {
+    width: 18px;
+    height: 18px;
+  }
+  .bestseller-list {
+    gap: 8px;
+  }
 }
