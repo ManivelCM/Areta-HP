@@ -128,6 +128,7 @@ body, .homepage, .footer, .footer-links a, .footer-bottom, .footer-top, .main-na
 .featured-categories {
   display: flex;
   width: 100%;
+  max-width: 1440px;
   height: 612px;
   margin: 0 auto 32px auto;
   position: relative;
@@ -186,6 +187,7 @@ body, .homepage, .footer, .footer-links a, .footer-bottom, .footer-top, .main-na
   border-radius: 0;
   min-width: 0;
   max-width: none;
+  flex: 1;
 }
 
 .category img {
@@ -199,6 +201,17 @@ body, .homepage, .footer, .footer-links a, .footer-bottom, .footer-top, .main-na
 }
 
 .category.right img {
+  width: 100%;
+  height: 612px;
+  object-fit: cover;
+  object-position: center 5%;
+  display: block;
+  border-radius: 0;
+  background: #fff;
+  position: static;
+  margin: 0 auto;
+}
+.category.left img {
   width: 100%;
   height: 612px;
   object-fit: cover;
@@ -496,20 +509,37 @@ body, .homepage, .footer, .footer-links a, .footer-bottom, .footer-top, .main-na
 
 @media (max-width: 900px) {
   .featured-categories {
-    flex-direction: row;
-    height: 400px;
+    flex-direction: column;
+    height: auto;
+    max-width: 100%;
   }
-  .category-carousel {
-    height: 100%;
-  }
+  
   .category {
     width: 100%;
     height: 400px;
+    flex: none;
   }
+
   .category img,
   .category.right img {
+    width: 100%;
     height: 400px;
+    object-fit: cover;
   }
+
+  .category-label {
+    font-size: 2rem;
+    bottom: 32px;
+  }
+
+  .category-label span {
+    font-size: 1rem;
+  }
+
+  .featured-categories::before {
+    display: none;
+  }
+
   .category-arrow {
     width: 36px;
     height: 36px;
@@ -526,6 +556,33 @@ body, .homepage, .footer, .footer-links a, .footer-bottom, .footer-top, .main-na
   .bestseller-arrow img {
     width: 12px;
     height: 12px;
+  }
+}
+
+@media (min-width: 901px) and (max-width: 1200px) {
+  .featured-categories {
+    max-width: 100%;
+    height: 500px;
+  }
+
+  .category {
+    height: 500px;
+  }
+
+  .category img,
+  .category.right img {
+    height: 500px;
+  }
+
+  .category-label {
+    font-size: 2.4rem;
+  }
+}
+
+@media (min-width: 1201px) {
+  .featured-categories {
+    max-width: 1440px;
+    margin: 0 auto 32px auto;
   }
 }
 
