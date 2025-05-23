@@ -81,6 +81,18 @@ const bestsellerProducts = [
   },
 ];
 
+
+const products = [
+    { brand: 'NIFE', title: 'BLACK SKIRT WITH HIGH WAIST', price: '$400', img: require('../assets/images/option1.png') },
+    { brand: 'NIFE', title: 'BLACK SKIRT WITH HIGH WAIST', price: '$400', img: require('../assets/images/option2.png') },
+    { brand: 'NIFE', title: 'BLACK SKIRT WITH HIGH WAIST', price: '$400', img: require('../assets/images/option3.png') },
+    { brand: 'NIFE', title: 'BLACK SKIRT WITH HIGH WAIST', price: '$400', img: require('../assets/images/option4.png') },
+    { brand: 'NIFE', title: 'BLACK SKIRT WITH HIGH WAIST', price: '$400', img: require('../assets/images/option1.png') },
+    { brand: 'NIFE', title: 'BLACK SKIRT WITH HIGH WAIST', price: '$400', img: require('../assets/images/option2.png') },
+    { brand: 'NIFE', title: 'BLACK SKIRT WITH HIGH WAIST', price: '$400', img: require('../assets/images/option3.png') },
+    { brand: 'NIFE', title: 'BLACK SKIRT WITH HIGH WAIST', price: '$400', img: require('../assets/images/option4.png') },
+];
+
 const Homepage = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
     const intervalRef = useRef(null);
@@ -88,7 +100,7 @@ const Homepage = () => {
     const [categoryIndex, setCategoryIndex] = useState(0);
     const [bestsellerIndex, setBestsellerIndex] = useState(0);
     const visibleCount = 4;
-    const maxBestsellerIndex = bestsellerProducts.length - visibleCount;
+    const maxBestsellerIndex = Math.max(0, products.length - visibleCount);
 
     useEffect(() => {
         // Only set interval for image slides
@@ -181,17 +193,17 @@ const Homepage = () => {
                             <img src={require('../assets/icons/leftarrow.png')} alt="Left Arrow" />
                         </button>
                         <div className="bestseller-list">
-                            {bestsellerProducts.slice(bestsellerIndex, bestsellerIndex + visibleCount).map((product, idx) => (
+                            {products.slice(bestsellerIndex, bestsellerIndex + visibleCount).map((product, idx) => (
                                 <div className="product-card" key={idx}>
                                     <div className="product-image-box">
                                         <img src={product.img} alt={product.title} />
                                     </div>
                                     <div className="product-info">
-                                        <div className="product-brand">{product.brand}</div>
-                                        <div className="product-title">{product.title}</div>
-                                        <div className="product-price">{product.price}</div>
-                                        <div className="product-selector"></div>
-                                    </div>
+                                            <div className="brand">{product.brand}</div>
+                                                <div className="product-name">{product.title}</div>
+                                                <div className="price">{product.price}</div>
+                                                <input type="radio" name="product-select" />
+                                     </div>
                                 </div>
                             ))}
                         </div>

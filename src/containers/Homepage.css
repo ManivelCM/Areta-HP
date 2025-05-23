@@ -156,7 +156,6 @@ body, .homepage, .footer, .footer-links a, .footer-bottom, .footer-top, .main-na
   justify-content: center;
   position: relative;
   z-index: 3;
-  margin: 0 16px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.10);
   cursor: pointer;
   transition: background 0.2s;
@@ -280,7 +279,7 @@ body, .homepage, .footer, .footer-links a, .footer-bottom, .footer-top, .main-na
 
 .bestseller-arrow {
   position: absolute;
-  top: 40%;
+  top: 30%;
   transform: translateY(-50%);
   z-index: 3;
   border: none;
@@ -378,6 +377,9 @@ body, .homepage, .footer, .footer-links a, .footer-bottom, .footer-top, .main-na
   border-radius: 50%;
   margin-top: 8px;
   margin-left: 2px;
+}
+.view-all-row{
+  margin-top: 50px;
 }
 
 .spring-look-section {
